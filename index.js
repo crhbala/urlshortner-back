@@ -14,7 +14,7 @@ const PORT = process.env.PORT;
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://darling-tartufo-a98181.netlify.app"],
     methods: ["GET", "POST"],
     credentials: true
 }))
@@ -109,7 +109,7 @@ app.post('/forgot-password', (req, res) => {
             from: process.env.EMAIL,
             to: email,
             subject: 'Reset Password Link',
-            text: `http://localhost:5173/reset_password/${user._id}/${token}`
+            text: `https://darling-tartufo-a98181.netlify.app/${user._id}/${token}`
           };
           
           transporter.sendMail(mailOptions, function(error, info){
