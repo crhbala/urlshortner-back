@@ -100,14 +100,14 @@ app.post('/forgot-password', (req, res) => {
    port: 465,
    secure: true,
             auth: {
-                user: 'passforgot45@gmail.com',
-                pass: 'ijkzwobyuwbyosyj'
+                user: process.env.EMAIL,
+                pass: process.env.PASS
                 // pass: 'passforgot45nodemailer'
             }
           });
           
           var mailOptions = {
-            from: 'passforgot45@gmail.con',
+            from: process.env.EMAIL,
             to: email,
             subject: 'Reset Password Link',
             text: `http://localhost:5173/reset_password/${user._id}/${token}`
