@@ -102,7 +102,6 @@ app.post('/forgot-password', (req, res) => {
             auth: {
                 user: process.env.EMAIL,
                 pass: process.env.PASS
-                // pass: 'passforgot45nodemailer'
             }
           });
           
