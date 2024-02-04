@@ -21,7 +21,7 @@ app.use(cookieParser())
 mongoose.connect(`${process.env.DB_URL}/${process.env.DB_NAME}`);
 
 
-//user verify. if admin those path is dashboard
+//user verify. if admin path is dashboard
 const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
 
@@ -80,7 +80,6 @@ app.post('/auth/login', (req, res) => {
     })
 })
 
-// This API will handle generate a token then it will send an email to the user:
 
 app.post('/auth/forgot-password', (req, res) => {
     const {email} = req.body;
@@ -144,7 +143,7 @@ app.use('/url', urlRoute);
 app.get('/:shortId', async (req, res) => {
   const shortId = req.params.shortId;
   try {
-    // Find the document by shortId and update it
+
     const entry = await URL.findOneAndUpdate(
       { shortId },
       {
@@ -154,7 +153,7 @@ app.get('/:shortId', async (req, res) => {
           },
         },
       },
-      { new: true } // Return the modified document instead of the original one
+      { new: true }
     );
 
     if (entry && entry.redirectURL) {
